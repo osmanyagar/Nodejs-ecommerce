@@ -33,7 +33,7 @@ app.get('*', (req,res) =>{
         page_name:'404'
     })
 });
-const port = 3005; 
+const port = process.env.PORT || 3000;; 
 app.listen(port,()=>{
     console.log(`Localhost -> ${port}`);
 })
