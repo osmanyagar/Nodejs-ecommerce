@@ -4,8 +4,14 @@ const pageRouther = require('./routes/PageRouthe');
 const productRouther = require('./routes/productRouther');
 const PCRouther = require('./routes/productCategoryRouthe'); 
 const SubRouther = require('./routes/productSubcategory');
+
+
+
+
+
+
 //Mongose Connection Code
-mongoose.connect('mongodb://localhost/mkstudio-test',{
+mongoose.connect('mongodb+srv://osman2:Cafw0gUiHTazwFr9@cluster0.aazzx.mongodb.net/mkstduio-test?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(()=>{
