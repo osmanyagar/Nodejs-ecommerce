@@ -255,16 +255,44 @@ exports.getCategories4 = async (req, res) => {
 
 //5. Slug -> Ürünlerin Tekil Sayfası
 exports.getCategories5 = async (req, res) => {
+  const sayilar = new Array();
+ 
   try {
     const categoryPreVariable = await Categories_3.findOne({slug:req.params.slug3})
     const variable_1 = await Categories_4.find({slug:req.params.slug4})
-    const id = variable_1.category;
- 
-    console.log(id+ "Kategori İsimi" );
-    console.log(variable_1);
+    const Relatedproducts = await Categories_4.find({category:categoryPreVariable.id}).sort({index:-1});
+    let sayi = 0;
+    switch (Relatedproducts.length) {
+      case 1:
+         sayi = 1;
+         break;
+      case 2:
+          sayi = 2;
+          break;
+      case 3:
+         sayi = 3;
+         break;
+    
+      default:
+         sayi = 4;
+        break;
+    }
+    for (var i = 0; i < sayi; i++) {  
+        var randomnumber = Math.floor(Math.random() * (Relatedproducts.length)); 
+        if (sayilar.indexOf(randomnumber)==-1) { 
+            sayilar.push(randomnumber);
+        }
+        else { 
+            i--;
+        }
+    }
+  
     res.status(200).render( 'productPage',{
       variable_1,
+      sayilar,
       categoryPreVariable,
+      sayi,
+      Relatedproducts,
       page_name:'subcategory',
     });
   } catch (error) {
