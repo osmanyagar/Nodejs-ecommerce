@@ -6,7 +6,7 @@ const categoryController = require('../controllers/productCategoryController');
 const router = express.Router();
 
 
-router.route('/').get(categoryController.getAllCatagory);
+router.route('/').get(categoryController.getCategories1);
 router.route('/anasayfa').get(pageController.getHomePage);
 router.route('/sepet').get(pageController.getPaymentPage);
 router.route('/iletisim').get(pageController.getContactPage);

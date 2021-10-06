@@ -1,25 +1,39 @@
+//Kütüphaneler
 const express = require('express');
 const mongoose = require('mongoose');
+const fileUpload = require('express-fileupload');
+
+//Yönlendirmeler
 const pageRouther = require('./routes/PageRouthe');
-const productRouther = require('./routes/productRouther');
-const PCRouther = require('./routes/productCategoryRouthe'); 
-const SubRouther = require('./routes/productSubcategory');
+const Categorys = require('./routes/productCategoryRouthe'); 
+const PostRouther = require('./routes/categoryPostRouthe'); 
 
 
 
 
+//Mongoose Test Network Connect Code
+// mongoose.connect('mongodb+srv://osman2:Cafw0gUiHTazwFr9@cluster0.aazzx.mongodb.net/mkstduio-test?retryWrites=true&w=majority',{
+//     useNewUrlParser:true,
+//     useUnifiedTopology:true
+// }).then(()=>{
+//     console.log('Mongo - DB Connection');
+// })
 
-
-//Mongose Connection Code
-mongoose.connect('mongodb+srv://osman2:Cafw0gUiHTazwFr9@cluster0.aazzx.mongodb.net/mkstduio-test?retryWrites=true&w=majority',{
+//Mongose Locale DB Connect
+mongoose.connect('mongodb://localhost/mk-studiotest2',{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(()=>{
     console.log('Mongo - DB Connection');
 })
 
+
 //using 
 const app = express();
+app.use(express.static('public'));
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+app.use(fileUpload());
 
 //Tamplate Engine Importlama
 app.set('view engine','ejs');
@@ -31,14 +45,31 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 
 app.use('/',pageRouther);
 // app.use('/magaza',productRouther);
-app.use('/urunler',PCRouther);
-app.use('/subcategories',SubRouther);
+app.use('/urunler',Categorys);
+app.use('/post-req',PostRouther);
+
+app.post('/busbodypost', async function(req, res) {
+    file = req.files
+    await console.log(req.files.image);  // here is the field name of the form
+    res.send(file);
+  });
+
+
+
+//Tekil Ürün Sayfası Deneme
+app.get('/single',(req,res) =>{
+    res.render('productSinglePage', {
+        page_name:'subcategory'
+    });
+   
+});
 
 app.get('*', (req,res) =>{
     res.status(404).render('404',{
         page_name:'404'
     })
 });
+
 const port = process.env.PORT || 80; 
 app.listen(port,()=>{
     console.log(`Localhost -> ${port}`);
