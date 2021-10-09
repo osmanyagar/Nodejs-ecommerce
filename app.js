@@ -19,7 +19,7 @@ mongoose.connect('mongodb+srv://osman2:Cafw0gUiHTazwFr9@cluster0.aazzx.mongodb.n
     console.log('Mongo - DB Connection');
 })
 
-// //Mongose Locale DB Connect
+//Mongose Locale DB Connect
 // mongoose.connect('mongodb://localhost/mk-studiotest2',{
 //     useNewUrlParser:true,
 //     useUnifiedTopology:true
@@ -47,12 +47,6 @@ app.use('/',pageRouther);
 // app.use('/magaza',productRouther);
 app.use('/urunler',Categorys);
 app.use('/post-req',PostRouther);
-
-app.post('/busbodypost', async function(req, res) {
-    file = req.files
-    await console.log(req.files.image);  // here is the field name of the form
-    res.send(file);
-  });
 
 
 
