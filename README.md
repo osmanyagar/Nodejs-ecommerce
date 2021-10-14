@@ -10,3 +10,16 @@ MKSTUDİO - Website
 -> Tekil Ürün Sayfası(Ürün Adet - Ürün Boyut) [Boyut değişimi ve ürün adedine göre fiyat arttırılmalı]
 -> Ekran görüntüsünü veya resmin alınmasını engelleyecek önlemler 
 ----
+
+##11.10.2021   
+
+--> Google Analytics verileri - Head Bölümüne Eklendi!
+---
+--> Top Rate Sayfasının oluşumunu bitir;
+ ###Veri Tabanı  -> İsim - Görsel - Fiyat (Categories - 4 Veri Tabanından Seçim İşlemleri yapılabilir.)
+ ###İşleri hızlandırmak için her sayfada aynı görüntüde olacak dinamik tanımlı 5 adet ekleme işlemini Admin Panelden yaptır
+ ###Adet Butonunu kaldır 
+###Modelin boyutlarını buton active olacak şekilde tamamla
+ 
+
+ gitlab deneme

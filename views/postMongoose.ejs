@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="mongosePostCss.css">
+    <title>Hello, world!</title>
+  <style>
+        input[type=text], select {
+          width: 10%;
+          margin: 3px 2px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        input[type=submit] {
+          width: 10%;
+          background-color: #4CAF50;
+          color: white;
+          padding: 2px 10px;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+        
+        input[type=submit]:hover {
+          background-color: #45a049;
+        }
+        .productInput[type=text]{
+          width: 40%;
+          margin: 3px 2px;
+          border: 1px solid rgb(0, 0, 0);
+          border-radius: 4px;
+        }
+        .productInput[type=submit]{
+          width: 40%;
+          margin: 3px 2px;
+          border: 1px solid rgb(14, 14, 14);
+          border-radius: 4px;
+        }
+        
+        div {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 2px;
+        }
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        font-family: 'Times New Roman', Times, serif;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      .modal-dialog {
+      
+      width: 700px;
+
+      }
+      .modalCatId{
+        font-size: 8pt;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+<body>
+
+
+<div>
+  <form action="/post-req/categories1" method="POST" name="create1" id="create1" encType="multipart/form-data">
+    <label for="fname">Categori - 1</label>
+    <input type="text" id="fname" name="name" placeholder="Name">
+    <input type="text" id="lname" name="subTitle" placeholder="subTitle">
+    <input type="text" id="lname" name="index" placeholder="index">
+    <input type="file" class="pr-5" name="image"><span class="pr-5"></span><span class="pr-5"></span>
+    <input type="submit" value="Submit">
+  </form>
+
+  
+  <form action="/post-req/categories2" method="POST" encType="multipart/form-data">
+    <label for="fname">Categori - 2</label>
+    <input type="text" id="fname" name="name" placeholder="Name">
+    <input type="text" id="lname" name="" placeholder="SubName">
+    <input type="text" id="lname" name="index" placeholder="index">
+    <select name="category">
+     <% for (let i=0; i<variable_1.length; i++){ %>
+        <option value="<%= variable_1[i]._id%>"><%= variable_1[i].name %></option>
+     <%}%>
+    </select>
+    <input type="file" name="image">
+    <input type="submit" value="Submit">
+  </form>
+
+  <form action="/post-req/categories3" method="POST"  encType="multipart/form-data">
+    <label for="fname">Categori - 3</label>
+    <input type="text" id="fname" name="name" placeholder="Name">
+    <input type="text" id="lname" name="" placeholder="SubName">
+    <input type="text" id="lname" name="index" placeholder="index">
+    <select name="category">
+      <% for (let i=0; i<variable_2.length; i++){ %>
+         <option value="<%= variable_2[i]._id%>"><%= variable_2[i].name %></option>
+      <%}%>
+     </select>
+    <input type="file" name="image">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+<hr>
+<!-- Kategori-4 (Ürün) Ekle  -->
+<button type="button" class="btn btn-dark w-100" data-toggle="modal" data-target="#exampleModal4">
+  Ürün Ekle
+</button>
+
+<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel4">
+        
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+        
+         <form action="/post-req/categories4" method="POST" encType="multipart/form-data">
+            <input type="text" class="productInput" id="lname" name="index" placeholder="Sıra Numarası">
+            <input type="number" class="productInput" id="lname" name="price" placeholder="Fiyat"><br>
+            <input type="text" class="productInput" id="fname" name="name" placeholder="Ürün İsimi">
+            <input type="text" class="productInput" id="lname" name="explanation" placeholder="Ürün Alt Açıklama"> <br>
+            
+            <select type="text" name="category" class="productInput">
+            <% for (let i=0; i<variable_3.length; i++){ %>
+                <option  class="productInput" value="<%= variable_3[i]._id%>"><%= variable_3[i].name %></option>
+            <%}%>
+            </select>
+            <input type="text" class="productInput" id="lname" name="info" placeholder="Keywords"> <br>
+            <br><label for="image" class="pr-2">Ana Resim  <span class="pr-4"></span> -></label>
+            <input type="file" name="image">
+          
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" value="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+
+        </div>
+        
+    </div>
+  </div>
+</div>
+<!-- Kategori-2 Modal Son  -->
+
+
+<hr>
+
+
+
+
+                                                <!-- Tablo Görünümü -->
+<div>
+            <!-- Kategori Görüntüleme İçin Button Görünümlü Modal Bölümü -->
+ <h3>Tablo Görüntüle</h3>
+
+ <!-- Kategori-1 Modal Başlangıç  -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Kategori - 1 Görüntüle
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Kategori 1 Veri Tabanı Bilgileri</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>İndex</th>
+            <th>İmage</th>
+            <th>Slug</th>
+          </tr>
+
+          <% for (let i=0; i<variable_1.length; i++){ %>
+            <tr>
+              <td><%= variable_1[i].name %></td>
+              <td><%= variable_1[i].index %></td>
+              <td><span class="modalCatId"><%= variable_1[i].image %></span></td>
+              <td><span class="modalCatId"><%= variable_1[i].slug %></span></td>
+            </tr>
+         <%}%>
+          
+  
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Kategori-1 Modal Son  -->
+
+<!-- Kategori-2 Modal Başlangıç  -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+  Kategori - 2 Görüntüle
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <% for (let i=0; i<variable_1.length; i++){ %>
+              <strong><span class="modalCatId"><%= variable_1[i].name %> ID =</span></strong>
+              <span class="modalCatId"><%= variable_1[i].id %></span> <br>
+          <%}%>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>İndex</th>
+            <th>İmage</th>
+            <th>Category</th>
+          </tr>
+
+          <% for (let i=0; i<variable_2.length; i++){ %>
+            <tr>
+              <td><%= variable_2[i].name %></td>
+              <td><%= variable_2[i].index %></td>
+              <td><span class="modalCatId"><%= variable_2[i].image %></span></td>
+              <td><span class="modalCatId"><%= variable_2[i].category %></span></td>
+            </tr>
+         <%}%>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Kategori-2 Modal Son  -->
+
+
+<!-- Kategori-3 Modal Başlangıç  -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
+  Kategori - 3 Görüntüle
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <% for (let i=0; i<variable_2.length; i++){ %>
+              <strong><span class="modalCatId"><%= variable_2[i].name %> ID =</span></strong>
+              <span class="modalCatId"><%= variable_2[i].id %></span> <br>
+          <%}%>
+        </h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>İndex</th>
+            <th>İmage</th>
+            <th>Category</th>
+          </tr>
+
+          <% for (let i=0; i<variable_3.length; i++){ %>
+            <tr>
+              <td><%= variable_3[i].name %></td>
+              <td><%= variable_3[i].index %></td>
+              <td><span class="modalCatId"><%= variable_3[i].image %></span></td>
+              <td><span class="modalCatId"><%= variable_3[i].category %></span></td>
+            </tr>
+         <%}%>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Kategori-3 Modal Son  -->
+
+
+
+<!-- Kategori-4 Modal Başlangıç  -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4Previev">
+  Kategori - 4 Görüntüle
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal4Previev" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <% for (let i=0; i<variable_4.length; i++){ %>
+              <strong><span class="modalCatId"><%= variable_4[i].name %> ID =</span></strong>
+              <span class="modalCatId"><%= variable_4[i].id %></span> <br>
+          <%}%>
+        </h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>İndex</th>
+            <th>Price</th>
+            <th>Category</th>
+          </tr>
+
+          <% for (let i=0; i<variable_4.length; i++){ %>
+            <tr>
+              <td><%= variable_4[i].name %></td>
+              <td><%= variable_4[i].index %></td>
+              <td><span class="modalCatId"><%= variable_4[i].price %></span></td>
+              <td><span class="modalCatId"><%= variable_4[i].category %></span></td>
+            </tr>
+         <%}%>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Kategori-4 Modal Son  -->
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
