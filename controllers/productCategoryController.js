@@ -153,6 +153,7 @@ exports.createCategories4= async (req, res) => {
 
 //Kategori Listeleme
 exports.getCategories1= async (req, res) => {
+  userIN
   try {
     const variable_1 = await Categories_1.find().sort({index:1});
     const categoryPreVariable= "";
@@ -178,6 +179,7 @@ exports.getCategories1= async (req, res) => {
 };
 //Alt Kategori Grubunu Çağırır
 exports.getCategories2 = async (req, res) => {
+  userIN
   try {
     const categoryPreVariable = await Categories_1.findOne({slug:req.params.slug})
     const variable_1 = await Categories_2.find({category:categoryPreVariable._id}).sort({index:1});
@@ -203,6 +205,7 @@ exports.getCategories2 = async (req, res) => {
 };
 //Alt Kategori - 3. Categories Sayfası
 exports.getCategories3 = async (req, res) => {
+  userIN
   try {
     const categoryPreVariable = await Categories_2.findOne({slug:req.params.slug2})
     const variable_1 = await Categories_3.find({category:categoryPreVariable._id}).sort({index:1});
@@ -229,6 +232,7 @@ exports.getCategories3 = async (req, res) => {
 };
 //Alt Kategori - 4.Categories Sayfası
 exports.getCategories4 = async (req, res) => {
+  userIN
   try {
     const categoryPreVariable = await Categories_3.findOne({slug:req.params.slug3})
     const variable_1 = await Categories_4.find({category:categoryPreVariable._id}).sort({index:1});
@@ -255,9 +259,9 @@ exports.getCategories4 = async (req, res) => {
 
 //5. Slug -> Ürünlerin Tekil Sayfası
 exports.getCategories5 = async (req, res) => {
+  userIN
   const sayilar = new Array();
- 
-  try {
+   try {
     const categoryPreVariable = await Categories_3.findOne({slug:req.params.slug3})
     const variable_1 = await Categories_4.find({slug:req.params.slug4})
     const Relatedproducts = await Categories_4.find({category:categoryPreVariable.id}).sort({index:-1});
@@ -288,6 +292,7 @@ exports.getCategories5 = async (req, res) => {
     }
   
     res.status(200).render( 'productPage',{
+      userIN,
       variable_1,
       sayilar,
       categoryPreVariable,
