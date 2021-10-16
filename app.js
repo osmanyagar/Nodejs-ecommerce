@@ -67,12 +67,6 @@ app.use('/post-req',PostRouther);
 app.use('/users',AuthRouter);
 
 
-// app.get('*', (req,res) =>{
-//     res.status(404).render('404',{
-//         page_name:'404'
-//     })
-// });
-
 const port = process.env.PORT || 80; 
 app.listen(port,()=>{
     console.log(`Localhost -> ${port}`);
