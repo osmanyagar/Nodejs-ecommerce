@@ -2,30 +2,34 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
+const MongoStore = require('connect-mongo');
+var session = require('express-session');
 
 //Yönlendirmeler
 const pageRouther = require('./routes/PageRouthe');
 const Categorys = require('./routes/productCategoryRouthe'); 
 const PostRouther = require('./routes/categoryPostRouthe'); 
+const AuthRouter = require('./routes/authRoutes'); 
 
 
-
+//Global Variable
+global.userIN = null;
 
 // Mongoose Test Network Connect Code
-mongoose.connect('mongodb+srv://osman2:Cafw0gUiHTazwFr9@cluster0.aazzx.mongodb.net/mkstduio-2test?retryWrites=true&w=majority',{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-}).then(()=>{
-    console.log('Mongo - DB Connection');
-})
-
-//Mongose Locale DB Connect
-// mongoose.connect('mongodb://localhost/mk-studiotest2',{
+// mongoose.connect('mongodb+srv://osman2:Cafw0gUiHTazwFr9@cluster0.aazzx.mongodb.net/mkstduio-2test?retryWrites=true&w=majority',{
 //     useNewUrlParser:true,
 //     useUnifiedTopology:true
 // }).then(()=>{
 //     console.log('Mongo - DB Connection');
 // })
+
+//Mongose Locale DB Connect
+mongoose.connect('mongodb://localhost/mk-studiotest2',{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+}).then(()=>{
+    console.log('Mongo - DB Connection');
+})
 
 
 //using 
@@ -43,26 +47,31 @@ app.use(express.static(__dirname+'/public'));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/mk-studiotest2'}),
+}));
+
+app.use('*',(req,res,next) =>{
+    userIN = req.session.userID;
+    next();
+});
+
+//Yönlendirmeler ->
 app.use('/',pageRouther);
 // app.use('/magaza',productRouther);
 app.use('/urunler',Categorys);
 app.use('/post-req',PostRouther);
+app.use('/users',AuthRouter);
 
 
-
-//Tekil Ürün Sayfası Deneme
-app.get('/single',(req,res) =>{
-    res.render('productSinglePage', {
-        page_name:'subcategory'
-    });
-   
-});
-
-app.get('*', (req,res) =>{
-    res.status(404).render('404',{
-        page_name:'404'
-    })
-});
+// app.get('*', (req,res) =>{
+//     res.status(404).render('404',{
+//         page_name:'404'
+//     })
+// });
 
 const port = process.env.PORT || 80; 
 app.listen(port,()=>{
