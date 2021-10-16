@@ -21,5 +21,10 @@ MKSTUDİO - Website
  ###Adet Butonunu kaldır 
 ###Modelin boyutlarını buton active olacak şekilde tamamla
  
+----
 
- gitlab deneme
+##AUTH İŞLEMLERİ
+###Kalanlar
+#Register işleminde Mail Doğrualma
+#GoogleAUTH
+#ForgetPassword Mail Gönderimi

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <link rel="stylesheet" type="text/css" href="/css/auth/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/auth/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/auth/iofrm-style.css">
+    <link rel="stylesheet" type="text/css" href="/css/auth/iofrm-theme16.css">
+</head>
+<body>
+    <div class="form-body without-side">
+        <div class="website-logo">
+            <a href="index.html">
+                <div class="logo">
+                    <!-- <span><img class="logo-size" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/842px-Apple_logo_black.svg.png" alt=""></span> -->
+                </div>
+            </a>
+        </div>
+        <div class="row">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+                    <img src="/graphic3.svg" alt="">
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3 class="text-center">Giriş Yap</h3>
+                        <p>Siparislerinizi etkin ve hızlı bir şekilde verebilip, takibini yapmanız için sistme giris yapmalısınız</p>
+                        <form role="form" action="/users/login" method="POST">
+                            <input class="form-control" type="email"  id="email" name="email" placeholder="Kayıtlı Mail Hesabınız" required>
+                            <input class="form-control" type="password" id="password" name="password" placeholder="Şifre" required>
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Giriş</button> <a href="./SifremiUnuttum">Şifremi Unuttum</a>
+                            </div>
+                        </form>
+                        <div class="other-links">
+                            <div class="text">Or login with</div>
+                            <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a><a href="#"><i class="fab fa-google"></i>Google</a><a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a>
+                        </div>
+                        <div class="page-links">
+                            <a href="./KayitOl">Yeni Hesap Oluştur</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="/js/auth/jquery.min.js"></script>
+<script src="/js/auth/popper.min.js"></script>
+<script src="/js/auth/bootstrap.min.js"></script>
+<script src="/js/auth/main.js"></script>
+</body>
+</html>
