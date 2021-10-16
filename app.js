@@ -71,5 +71,3 @@ const port = process.env.PORT || 80;
 app.listen(port,()=>{
     console.log(`Localhost -> ${port}`);
 })
-
-module.exports = userIN;
