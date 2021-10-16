@@ -1,4 +1,4 @@
-const userIN = require('/app'); 
+const userIN = require('./app'); 
 //Ana Sayfa İşlemleri 
 exports.getHomePage = (req,res) => {
     res.status(200).render('homePage',{
