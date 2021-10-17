@@ -16,20 +16,20 @@ const AuthRouter = require('./routes/authRoutes');
 global.userIN = null;
 
 // Mongoose Test Network Connect Code
-// mongoose.connect('mongodb+srv://osman2:Cafw0gUiHTazwFr9@cluster0.aazzx.mongodb.net/mkstduio-2test?retryWrites=true&w=majority',{
-//     useNewUrlParser:true,
-//     useUnifiedTopology:true
-// }).then(()=>{
-//     console.log('Mongo - DB Connection');
-// })
-
-//Mongose Locale DB Connect
-mongoose.connect('mongodb://localhost/mk-studiotest2',{
+mongoose.connect('mongodb+srv://osman2:Cafw0gUiHTazwFr9@cluster0.aazzx.mongodb.net/mkstduio-2test?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(()=>{
     console.log('Mongo - DB Connection');
 })
+
+//Mongose Locale DB Connect
+// mongoose.connect('mongodb://localhost/mk-studiotest2',{
+//     useNewUrlParser:true,
+//     useUnifiedTopology:true
+// }).then(()=>{
+//     console.log('Mongo - DB Connection');
+// })
 
 
 //using 

@@ -26,7 +26,6 @@
     "express-session": "^1.17.2",
     "fs": "^0.0.1-security",
     "mongoose": "^6.0.8",
-    "pm2": "^5.1.2",
     "slugify": "^1.6.0"
   },
   "devDependencies": {
