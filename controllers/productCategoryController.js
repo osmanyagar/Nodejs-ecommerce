@@ -1,6 +1,7 @@
 const fileUpload = require('express-fileupload');
 const express = require('express');
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 
 const Product = require("../models/product");
 const Categories_1 = require("../models/categories-1-Model");
@@ -63,14 +64,14 @@ exports.PostcreatePage= async (req, res) => {
 exports.createCategories1= async (req, res) => {
 
   let uploadeImage = req.files.image;
-  await console.log(req.body);
-  let uploadPath = './public/images/WebSiteUploads/Category1/' + `${uploadeImage.name}`;
+  const imageName = uuidv4();
+  let uploadPath = './public/images/WebSiteUploads/Category1/' + `${imageName}`;
   console.log(`Resim Yolu => ${uploadPath}`);
   try {
     uploadeImage.mv(uploadPath, async () =>{
       await Categories_1.create({
         ...req.body,
-        image: 'images/WebSiteUploads/Category1/' + `${req.files.image.name}`,
+        image: 'images/WebSiteUploads/Category1/' + `${imageName}`,
       });
     });
     res.status(201).json({
@@ -85,14 +86,14 @@ exports.createCategories1= async (req, res) => {
 };
 exports.createCategories2= async (req, res) => {
   let uploadeImage = req.files.image;
-  await console.log(req.body);
-  let uploadPath = './public/images/WebSiteUploads/Category2/' + `${uploadeImage.name}`;
+  const imageName = uuidv4();
+  let uploadPath = './public/images/WebSiteUploads/Category2/' + `${imageName}`;
   console.log(`Resim Yolu => ${uploadPath}`);
   try {
     uploadeImage.mv(uploadPath, async () =>{
       await Categories_2.create({
         ...req.body,
-        image: 'images/WebSiteUploads/Category2/' + `${req.files.image.name}`,
+        image: 'images/WebSiteUploads/Category2/' + `${imageName}`,
       });
     });
     res.status(201).json({
@@ -108,14 +109,14 @@ exports.createCategories2= async (req, res) => {
 
 exports.createCategories3= async (req, res) => {
   let uploadeImage = req.files.image;
-  await console.log(req.body);
-  let uploadPath = './public/images/WebSiteUploads/Category3/' + `${uploadeImage.name}`;
+  const imageName = uuidv4();
+  let uploadPath = './public/images/WebSiteUploads/Category3/' + `${imageName}`;
   console.log(`Resim Yolu => ${uploadPath}`);
   try {
     uploadeImage.mv(uploadPath, async () =>{
       await Categories_3.create({
         ...req.body,
-        image: 'images/WebSiteUploads/Category3/' + `${req.files.image.name}`,
+        image: 'images/WebSiteUploads/Category3/' + `${imageName}`,
       });
     });
     res.status(201).json({
@@ -130,14 +131,14 @@ exports.createCategories3= async (req, res) => {
 };
 exports.createCategories4= async (req, res) => {
   let uploadeImage = await req.files.image;
-  await console.log(req.body);
-  let uploadPath = './public/images/WebSiteUploads/Category4/' + `${uploadeImage.name}`;
+  const imageName = uuidv4();
+  let uploadPath = './public/images/WebSiteUploads/Category4/' + `${imageName}`;
   console.log(`Resim Yolu => ${uploadPath}`);
   try {
     uploadeImage.mv(uploadPath, async () =>{
       await Categories_4.create({
         ...req.body,
-        image: 'images/WebSiteUploads/Category4/' + `${req.files.image.name}`,
+        image: 'images/WebSiteUploads/Category4/' + `${imageName}`,
       });
     });
     res.status(201).json({

@@ -12,24 +12,27 @@ const PostRouther = require('./routes/categoryPostRouthe');
 const AuthRouter = require('./routes/authRoutes'); 
 
 
+//Logger Yönlendirmesi
+const logger = require('./controllers/logger');
+
 //Global Variable
 global.userIN = null;
 
 // Mongoose Test Network Connect Code
-mongoose.connect('mongodb+srv://osman2:Cafw0gUiHTazwFr9@cluster0.aazzx.mongodb.net/mkstduio-2test?retryWrites=true&w=majority',{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-}).then(()=>{
-    console.log('Mongo - DB Connection');
-})
-
-//Mongose Locale DB Connect
-// mongoose.connect('mongodb://localhost/mk-studiotest2',{
+// mongoose.connect('mongodb+srv://osman2:NUxPwBEmUAdhtxCJ@cluster0.aazzx.mongodb.net/mkstduio-2test?retryWrites=true&w=majority',{
 //     useNewUrlParser:true,
 //     useUnifiedTopology:true
 // }).then(()=>{
 //     console.log('Mongo - DB Connection');
 // })
+
+//Mongose Locale DB Connect
+mongoose.connect('mongodb://localhost/mk-studiotest22',{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+}).then(()=>{
+    console.log('Mongo - DB Connection');
+})
 
 
 //using 
@@ -66,10 +69,11 @@ app.use('/urunler',Categorys);
 app.use('/post-req',PostRouther);
 app.use('/users',AuthRouter);
 
-
 const port = process.env.PORT || 80; 
 app.listen(port,()=>{
-    console.log(`Localhost -> ${port}`);
-})
+      console.log(`Localhost -> ${port}`);
+     logger.portLogger.log('info',`Port ${port}, is avaible!`);
+ })
+
 
 module.exports = userIN;
