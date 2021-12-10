@@ -1,7 +1,9 @@
 //Login - Register Controller DEP.
 const bcrypt = require("bcrypt");
 const User = require("../models/User-Model");
+const logger = require('../controllers/logger.js');
 
+//Login - Register - Forget Tamplatelerini renderlama
 exports.userLogin= async (req, res) => {
   try {
     res.status(201).render('Auth/login',{
@@ -41,11 +43,11 @@ exports.userForgetPas= async (req, res) => {
 };
 
 
-
-
 exports.createUser= async (req, res) => {
   try {
     const user = await User.create(req.body);
+    const UserInfo = await User.findOne({email:req.body.email})
+    logger.customerRegisterLogger.log('info',` ${UserInfo._id}  => ${UserInfo.name} || ${UserInfo.email}`);
     res.status(201).json({
       status: "success",
       user,
@@ -71,6 +73,7 @@ exports.getUser= async (req, res) => {
               req.session.userID = user._id
               console.log(req.session.userID);
               res.status(202).redirect('/');
+              logger.custemerLoginLogger.log('info',`${req.session.userID}, is successfuly login!`);
             }else{
               res.status(200).send("Hatalı Şifre!");
             }

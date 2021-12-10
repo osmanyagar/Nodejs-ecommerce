@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 
 
 const userSchema = new Schema({
+  tc: {
+    type:Number
+  },
   name: {
     type: String,
     require: true,
@@ -13,13 +16,25 @@ const userSchema = new Schema({
     require: true,
     unique:true
   },
+  number: {
+    type:Number
+  },
+  birtday:{
+    type:Date
+  },
+  gender:{
+    type:Boolean
+  },
   password:{
       type:String,
       require:true
   },
+  address:{
+    type: [String]
+  },
   creteAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   }
 });
 
