@@ -82,7 +82,7 @@
     <input type="text" id="fname" name="name" placeholder="Name">
     <input type="text" id="lname" name="subTitle" placeholder="subTitle">
     <input type="text" id="lname" name="index" placeholder="index">
-    <input type="file" class="pr-5" name="image"><span class="pr-5"></span><span class="pr-5"></span>
+    <input type="file" class="pr-5" name="image" required><span class="pr-5"></span><span class="pr-5"></span>
     <input type="submit" value="Submit">
   </form>
 
@@ -97,7 +97,7 @@
         <option value="<%= variable_1[i]._id%>"><%= variable_1[i].name %></option>
      <%}%>
     </select>
-    <input type="file" name="image">
+    <input type="file" name="image" required>
     <input type="submit" value="Submit">
   </form>
 
@@ -111,7 +111,7 @@
          <option value="<%= variable_2[i]._id%>"><%= variable_2[i].name %></option>
       <%}%>
      </select>
-    <input type="file" name="image">
+    <input type="file" name="image" required>
     <input type="submit" value="Submit">
   </form>
 </div>
@@ -147,7 +147,7 @@
             </select>
             <input type="text" class="productInput" id="lname" name="info" placeholder="Keywords"> <br>
             <br><label for="image" class="pr-2">Ana Resim  <span class="pr-4"></span> -></label>
-            <input type="file" name="image">
+            <input type="file" name="image" required>
           
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

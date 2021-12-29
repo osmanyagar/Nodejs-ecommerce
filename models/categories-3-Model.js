@@ -31,6 +31,7 @@ Categories_3_Sheama.pre('validate',function(next){
       lower:true,
       scrict: true
     });
+    
     next();
 });
 

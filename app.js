@@ -19,20 +19,20 @@ const logger = require('./controllers/logger');
 global.userIN = null;
 
 // Mongoose Test Network Connect Code
-// mongoose.connect('mongodb+srv://osman2:NUxPwBEmUAdhtxCJ@cluster0.aazzx.mongodb.net/mkstduio-2test?retryWrites=true&w=majority',{
-//     useNewUrlParser:true,
-//     useUnifiedTopology:true
-// }).then(()=>{
-//     console.log('Mongo - DB Connection');
-// })
-
-//Mongose Locale DB Connect
-mongoose.connect('mongodb://localhost/mk-studiotest22',{
+mongoose.connect('mongodb+srv://osmans:SpEFaiHJoh8EpCfm@cluster0.aazzx.mongodb.net/mkstduio-testDB?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(()=>{
     console.log('Mongo - DB Connection');
 })
+
+//Mongose Locale DB Connect
+// mongoose.connect('mongodb://localhost/mk-studiotest22',{
+//     useNewUrlParser:true,
+//     useUnifiedTopology:true
+// }).then(()=>{
+//     console.log('Mongo - DB Connection');
+// })
 
 
 //using 
